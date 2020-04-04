@@ -1,17 +1,28 @@
-<h1>Listing Articles</h1>
+<h1>Articles</h1>
  
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-  </tr>
- 
-  <% @articles.each do |article| %>
+  <thead>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><a style="color:red;" href="/articles/<%=article.id%>">Show</a></td>
+      <th><strong>Title</strong></th>
+      <th><strong>Description</strong></th>
+      <th><strong>Actions</strong></th>
+      <th></th>
     </tr>
-  <% end %>
+  </thead>
+ 
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td>
+          <a href="/articles/<%=article.id%>">Show</a>
+          <a href="/articles/<%=article.id%>/edit">Edit</a>
+          <%= link_to 'Delete', article_path(article), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+
+<%= link_to 'New Article', new_article_path %>
