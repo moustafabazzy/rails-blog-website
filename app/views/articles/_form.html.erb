@@ -1,16 +1,15 @@
 <%= form_with(model: @article, local: true) do |form| %>
-  <p>
+  <div clss="form-group">
     <%= form.label :title %><br />
-    <%= form.text_field :title %>
-  </p>
+    <%= form.text_field :title, class:"form-control" %>
+  </div>
 
-  <p>
+  <div class="form-group mt-4">
     <%= form.label :description %><br />
-    <%= form.text_area :description %>
-  </p>
+    <%= form.text_area :description, class:"form-control", style: "height: 200px;" %>
+  </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  <%= form.submit "Save", class: "btn btn-primary" %>
+
 <% end %>
 
